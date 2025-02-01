@@ -1,7 +1,9 @@
 import dotenv from "dotenv";
 import { Hono } from "hono";
 import { throwerr } from "./utils/error.ts";
+import loader from "./utils/routes.ts";
 const app = new Hono();
+const routes = new loader(app);
 export default app;
 import logger from "./utils/logger.ts";
 
@@ -23,3 +25,5 @@ app.notFound((c) => {
 });
 
 logger.info(`Canyon is running on port ${PORT}`);
+
+routes.loadfolder("./src/fn/routes"); // idk why need to include src but it works???
