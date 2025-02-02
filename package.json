@@ -3,13 +3,18 @@
   "module": "index.ts",
   "type": "module",
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "@types/jsonwebtoken": "^9.0.8"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "dotenv": "^16.4.7",
-    "hono": "^4.6.20"
+    "hono": "^4.6.20",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.9.6",
+    "uuid": "^11.0.5"
   }
 }

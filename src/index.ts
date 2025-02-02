@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 import { Hono } from "hono";
 import { throwerr } from "./utils/error.ts";
 import loader from "./utils/routes.ts";
+import { connectToDB } from "./utils/database.ts";
 const app = new Hono();
 const routes = new loader(app);
 export default app;
@@ -10,6 +11,10 @@ import logger from "./utils/logger.ts";
 dotenv.config();
 const PORT = String(process.env.PORT);
 
+app.use("*", async (c, next) => {
+    logger.debug(`${c.req.method} || ${c.req.url}`);
+    await next();
+});
 
 app.onError((err, c) => {
     logger.error(`Error!: ${err.message}`);
@@ -23,6 +28,8 @@ app.notFound((c) => {
         "The resource you were trying to find could not be found.", [] , 1004, "", 404, c
     );
 });
+
+connectToDB();
 
 logger.info(`Canyon is running on port ${PORT}`);
 
