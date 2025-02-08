@@ -124,7 +124,7 @@ async function passgrant(
     );
   }
 
-  const user = await User.findOne({ "accountInfo.email": username });
+  const user = await User.findOne({ email: username });
 
   if (!user) {
     return throwerr(
