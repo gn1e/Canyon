@@ -3,11 +3,12 @@
   "module": "index.ts",
   "type": "module",
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
     "@types/bun": "latest",
     "@types/jsonwebtoken": "^9.0.8"
   },
   "peerDependencies": {
-    "typescript": "^5.0.0"
+    "typescript": "^5.7.3"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",

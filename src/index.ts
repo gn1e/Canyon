@@ -1,15 +1,22 @@
 import dotenv from "dotenv";
 import { Hono } from "hono";
+import { secureHeaders } from "hono/secure-headers";
 import { throwerr } from "./utils/error.ts";
 import loader from "./utils/routes.ts";
 import { connectToDB } from "./utils/database.ts";
+import path from "path";
 const app = new Hono();
 const routes = new loader(app);
 export default app;
 import logger from "./utils/logger.ts";
 
 dotenv.config();
-const PORT = String(process.env.PORT);
+const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
+if (isNaN(PORT)) {
+    logger.error("shit port");
+}
+
+app.use(secureHeaders());
 
 app.use("*", async (c, next) => {
     logger.debug(`${c.req.method} || ${c.req.url}`);
@@ -18,7 +25,10 @@ app.use("*", async (c, next) => {
 
 app.onError((err, c) => {
     logger.error(`Error!: ${err.message}`);
-    return c.text('Error! {Canyon}', 500);
+    return throwerr(
+        "errors.com.canyon.critical.error",
+        "An error has occured, this should be fixed soon.", [] , 1004, "", 404, c
+    );
 });
 
 app.notFound((c) => {
@@ -33,4 +43,5 @@ connectToDB();
 
 logger.info(`Canyon is running on port ${PORT}`);
 
-routes.loadfolder("./src/fn/routes"); // idk why need to include src but it works???
+const wowie = path.resolve("./src/fn/routes");
+routes.loadfolder(wowie);
