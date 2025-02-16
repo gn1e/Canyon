@@ -1,17 +1,6 @@
 import { Hono } from "hono";
-import contentpages from "../../../static/content/contentpages.json"
 
 export default (app: Hono) => {
-  app.get("/content/api/pages/*", (c) =>
-    c.json(contentpages)
-  );
-
-  app.get("/waitingroom/api/waitingroom", (c) =>
-    c.body(null, 204, {
-        'X-Message': 'Thanks for using Canyon!',
-        'Content-Type': 'text/plain',
-      })
-  );
 
   app.get("/fortnite/api/version", (c) =>
     c.json({
@@ -91,4 +80,4 @@ export default (app: Hono) => {
     c.header("Content-Type", "text/plain");
     return c.text("true");
   });
-};
+}
