@@ -93,9 +93,6 @@ export default (app: Hono) => {
     }
   });
 
-  app.get("/account/api/public/account", async (c) => {
-    // ill do it soon trust - abstract
-  })
   app.delete("/account/api/oauth/sessions/kill/:session", async (c) => {
     return c.json({ status: "OK" });
   });

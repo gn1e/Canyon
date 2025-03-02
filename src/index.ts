@@ -41,7 +41,7 @@ app.notFound((c) => {
 
 connectToDB();
 
-logger.canyon(`Canyon is running on port ${PORT}`);
+logger.info(`Canyon is running on port ${PORT}`);
 
 const wowie = path.resolve("./src/fn/routes");
 routes.loadfolder(wowie);

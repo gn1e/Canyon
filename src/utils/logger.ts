@@ -1,12 +1,12 @@
 enum level {
-    CANYON = 'canyon',
+    INFO = 'info',
     WARN = 'warn',
     ERROR = 'error',
     DEBUG = 'debug',
   }
   
   const coluor = {
-    canyon: '\x1b[34m',
+    info: '\x1b[34m',
     warn: '\x1b[33m',
     error: '\x1b[31m',
     debug: '\x1b[35m',
@@ -20,7 +20,7 @@ enum level {
       console.log(`[${time}]${coluor[level]} [${level.toUpperCase()}]${coluor.reset} ${msg}`); // Really bad imo, and isnt proper.
     }
   
-    public canyon(message: string) { this.log(level.CANYON, message); }
+    public info(message: string) { this.log(level.INFO, message); }
     public warn(message: string) { this.log(level.WARN, message); }
     public error(message: string) { this.log(level.ERROR, message); }
     public debug(message: string) { this.log(level.DEBUG, message); }
