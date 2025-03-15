@@ -5,7 +5,7 @@
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
     "@types/bun": "latest",
-    "@types/jsonwebtoken": "^9.0.8"
+    "@types/jsonwebtoken": "^9.0.9"
   },
   "peerDependencies": {
     "typescript": "^5.7.3"
@@ -13,9 +13,9 @@
   "dependencies": {
     "bcrypt": "^5.1.1",
     "dotenv": "^16.4.7",
-    "hono": "^4.6.20",
+    "hono": "^4.7.4",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.9.6",
-    "uuid": "^11.0.5"
+    "mongoose": "^8.12.1",
+    "uuid": "^11.1.0"
   }
 }
