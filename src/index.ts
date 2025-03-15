@@ -1,20 +1,17 @@
 import dotenv from "dotenv";
+import logger from "./utils/logger.ts";
+import loader from "./utils/routes.ts";
 import { Hono } from "hono";
 import { secureHeaders } from "hono/secure-headers";
 import { throwerr } from "./utils/error.ts";
-import loader from "./utils/routes.ts";
 import { connectToDB } from "./utils/database.ts";
-import path from "path";
+
 const app = new Hono();
 const routes = new loader(app);
 export default app;
-import logger from "./utils/logger.ts";
 
 dotenv.config();
-const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
-if (isNaN(PORT)) {
-    logger.error("shit port");
-}
+const PORT = String(process.env.PORT);
 
 app.use(secureHeaders());
 
@@ -43,5 +40,4 @@ connectToDB();
 
 logger.info(`Canyon is running on port ${PORT}`);
 
-const wowie = path.resolve("./src/fn/routes");
-routes.loadfolder(wowie);
+routes.loadfolder("./src/fn/routes"); // idk why need to include src but it works???
