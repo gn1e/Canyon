@@ -39,4 +39,5 @@ connectToDB();
 
 logger.info(`Canyon is running on port ${PORT}`);
 
-routes.loadfolder("./src/fn/routes"); // idk why need to include src but it works???
+routes.loadfolder("./src/fn/routes");
+routes.loadfolder("./src/fn/operations"); 
