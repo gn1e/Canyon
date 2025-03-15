@@ -1,10 +1,6 @@
 import { Hono } from "hono";
-import jwt from "jsonwebtoken";
-import { v4 as uuidv4 } from "uuid";
 import { throwerr } from "../../utils/error";
 import User from "../../models/User";
-
-const descret = process.env.SECRET as string;
 
 export default (app: Hono) => {
   app.get("/account/api/public/account/:accountId", async (c) => {
