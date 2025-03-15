@@ -2,7 +2,6 @@ import dotenv from "dotenv";
 import logger from "./utils/logger.ts";
 import loader from "./utils/routes.ts";
 import { Hono } from "hono";
-import { secureHeaders } from "hono/secure-headers";
 import { throwerr } from "./utils/error.ts";
 import { connectToDB } from "./utils/database.ts";
 
@@ -11,9 +10,9 @@ const routes = new loader(app);
 export default app;
 
 dotenv.config();
-const PORT = String(process.env.PORT);
+const PORT = process.env.PORT;
 
-app.use(secureHeaders());
+Bun.serve({ fetch: app.fetch, port: PORT, development: false });
 
 app.use("*", async (c, next) => {
     logger.debug(`${c.req.method} || ${c.req.url}`);
