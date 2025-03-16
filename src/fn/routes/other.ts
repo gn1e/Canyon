@@ -50,7 +50,7 @@ export default (app: Hono) => {
     })
   );
 
-  app.get("/fortnite/api/:version(versioncheck*|v2/versioncheck*)", (c) => // work smarter not harder
+  app.get("/fortnite/api/v2/versioncheck/:platform", (c) => // work smarter not harder
     c.json({ type: "NO_UPDATE" })
   );
 
