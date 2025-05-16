@@ -11,7 +11,7 @@
     "typescript": "^5.7.3"
   },
   "dependencies": {
-    "bcrypt": "^5.1.1",
+    "bcrypt": "^6.0.0",
     "dotenv": "^16.4.7",
     "hono": "^4.7.4",
     "jsonwebtoken": "^9.0.2",
