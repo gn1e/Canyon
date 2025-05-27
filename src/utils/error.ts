@@ -9,7 +9,7 @@ interface ErrResponse {
     error: string;
   }
   
-  function throwerr(
+  function throwError(
     errorCode: string,
     errorMessage: string,
     messageVars: string[],
@@ -38,5 +38,5 @@ interface ErrResponse {
   }
   
   
-export { throwerr };
+export { throwError };
   

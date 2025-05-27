@@ -7,10 +7,7 @@ export default (app: Hono) => {
   );
 
   app.get("/waitingroom/api/waitingroom", (c) =>
-    c.body(null, 204, {
-        'X-Message': 'Thanks for using Canyon!',
-        'Content-Type': 'text/plain',
-      })
+    c.body(null, 204)
   );
 
   app.get("/fortnite/api/version", (c) =>
@@ -50,7 +47,7 @@ export default (app: Hono) => {
     })
   );
 
-  app.get("/fortnite/api/v2/versioncheck/:platform", (c) => // work smarter not harder
+  app.get("/fortnite/api/v2/versioncheck/:platform", (c) => 
     c.json({ type: "NO_UPDATE" })
   );
 
@@ -59,7 +56,7 @@ export default (app: Hono) => {
 
     const privacySettings = {
       accountId: accountId,
-      optOutOfPublicLeaderboards: false, // make this proper 1day??
+      optOutOfPublicLeaderboards: false,
     };
 
     return c.json(privacySettings);

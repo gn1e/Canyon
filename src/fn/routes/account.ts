@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { throwerr } from "../../utils/error";
+import { throwError } from "../../utils/error";
 import User from "../../models/User";
 
 export default (app: Hono) => {
@@ -7,17 +7,39 @@ export default (app: Hono) => {
     const accountId = c.req.param("accountId");
     const user = await User.findOne({ accountId }).lean();
 
+    if (!user) {
+      return throwError(
+        "errors.com.canyon.common.not_found",
+        "The user you were trying to find could not be found.", [] , 1004, "", 404, c
+      );
+    }
+
     return c.json({
-        id: user?.accountId || null,
-        displayName: user?.username || null,
-        externalAuths: {},
-      });
+      id: user.accountId,
+      displayName: user.username,
+      email: user.email,
+      failedLoginAttempts: 0,
+      lastLogin: new Date().toISOString(),
+      numberOfDisplayNameChanges: 0,
+      ageGroup: "UNKNOWN",
+      headless: false,
+      country: "EU",
+      preferredLanguage: "en",
+      lastDisplayNameChange: "0000-00-00T00:00:00.000Z",
+      canUpdateDisplayName: false,
+      tfaEnabled: false,
+      emailVerified: true,
+      minorVerified: false,
+      minorExpected: false,
+      minorStatus: "NOT_MINOR",
+      cabinedMode: false,
+      hasHashedEmail: false,
+    });
    });
 
    
   app.get("/account/api/public/account/:accountId/externalAuths", (c) => {
-    c.status(204);
-    return c.json({});
+    return c.body(null, 204);
   });
 
   app.get("/account/api/public/account/displayName/:username", async (c) => {
@@ -25,7 +47,7 @@ export default (app: Hono) => {
     const user = await User.findOne({ username }).lean();
 
     if (!user) 
-        return throwerr(
+        return throwError(
             "errors.com.canyon.common.not_found",
             "The user you were trying to find could not be found.", [] , 1004, "", 404, c
         );
