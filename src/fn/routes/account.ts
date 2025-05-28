@@ -1,6 +1,6 @@
 import { Hono } from "hono";
 import { throwError } from "../../utils/error";
-import User from "../../models/User";
+import User from "../../models/User.ts";
 
 export default (app: Hono) => {
   app.get("/account/api/public/account/:accountId", async (c) => {
