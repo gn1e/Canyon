@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
-    "dotenv": "^16.4.7",
+    "dotenv": "^17.0.0",
     "hono": "^4.7.4",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.12.1",
