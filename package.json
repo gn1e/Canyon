@@ -3,7 +3,7 @@
   "module": "index.ts",
   "type": "module",
   "devDependencies": {
-    "@types/bcrypt": "^5.0.2",
+    "@types/bcrypt": "^6.0.0",
     "@types/bun": "latest",
     "@types/jsonwebtoken": "^9.0.9"
   },
