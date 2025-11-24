@@ -15,7 +15,7 @@
     "dotenv": "^17.0.0",
     "hono": "^4.7.4",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.12.1",
+    "mongoose": "^9.0.0",
     "uuid": "^13.0.0"
   }
 }
